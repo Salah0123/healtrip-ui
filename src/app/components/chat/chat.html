@@ -1,0 +1,125 @@
+<div
+  class="chat-container"
+  [dir]="direction()">
+
+  <header class="chat-header">
+
+    <div>
+      <h1>HealTrip AI</h1>
+
+      <p>
+        {{
+          isArabic()
+            ? 'مساعد لاتخاذ القرار الصحي'
+            : 'Patient Decision Assistant'
+        }}
+      </p>
+    </div>
+
+    <button
+      class="language-button"
+      (click)="toggleLanguage()">
+
+      {{ isArabic() ? 'EN' : 'عربي' }}
+
+    </button>
+
+  </header>
+
+
+  <main class="messages">
+
+    <div
+      *ngIf="messages().length === 0"
+      class="welcome">
+
+      <h2>
+        {{
+          isArabic()
+            ? 'مرحبًا بك في HealTrip'
+            : 'Welcome to HealTrip'
+        }}
+      </h2>
+
+      <p>
+        {{
+          isArabic()
+            ? 'يمكنك وصف حالتك أو البحث عن الأطباء والمستشفيات.'
+            : 'Describe your situation or search for doctors and hospitals.'
+        }}
+      </p>
+
+    </div>
+
+
+    <div
+      *ngFor="let msg of messages()"
+      class="message"
+      [class.user-message]="msg.role === 'user'"
+      [class.assistant-message]="msg.role === 'assistant'">
+
+      <div class="message-label">
+
+        {{
+          msg.role === 'user'
+            ? (isArabic() ? 'أنت' : 'You')
+            : 'HealTrip AI'
+        }}
+
+      </div>
+
+      <div
+        class="message-content"
+        [innerHTML]="
+          msg.role === 'assistant'
+            ? renderMarkdown(msg.content)
+            : msg.content
+        ">
+      </div>
+
+    </div>
+
+
+    <div
+      *ngIf="loading()"
+      class="typing">
+
+      {{
+        isArabic()
+          ? 'جاري التفكير...'
+          : 'Thinking...'
+      }}
+
+    </div>
+
+  </main>
+
+
+  <footer class="input-area">
+
+    <textarea
+      [ngModel]="message()"
+      (ngModelChange)="message.set($event)"
+      [placeholder]="
+        isArabic()
+          ? 'اكتب رسالتك هنا...'
+          : 'Type your message here...'
+      "
+      (keydown)="handleKeydown($event)">
+    </textarea>
+
+    <button
+      (click)="sendMessage()"
+      [disabled]="loading() || !message().trim()">
+
+      {{
+        isArabic()
+          ? 'إرسال'
+          : 'Send'
+      }}
+
+    </button>
+
+  </footer>
+
+</div>

@@ -1,0 +1,153 @@
+.chat-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7fb;
+  font-family: Arial, sans-serif;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.chat-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+}
+
+.language-button {
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.messages {
+  flex: 1;
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.welcome {
+  text-align: center;
+  margin-top: 100px;
+  color: #4b5563;
+}
+
+.message {
+  margin-bottom: 20px;
+  max-width: 75%;
+}
+
+.user-message {
+  margin-left: auto;
+}
+
+.assistant-message {
+  margin-right: auto;
+}
+
+.message-label {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #6b7280;
+}
+
+.message-content {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid #e5e7eb;
+}
+
+.user-message .message-content {
+  background: #e8f0fe;
+}
+
+.typing {
+  color: #6b7280;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.input-area {
+  display: flex;
+  gap: 12px;
+  width: min(900px, 92%);
+  margin: 0 auto;
+  padding: 20px 0 30px;
+}
+
+.input-area textarea {
+  flex: 1;
+  min-height: 55px;
+  resize: none;
+  padding: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.input-area button {
+  width: 90px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.input-area button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message-content p {
+  margin: 0 0 10px;
+}
+
+.message-content p:last-child {
+  margin-bottom: 0;
+}
+
+.message-content ul,
+.message-content ol {
+  margin: 8px 0;
+  padding-inline-start: 24px;
+}
+
+.message-content li {
+  margin-bottom: 5px;
+}
+
+.message-content strong {
+  font-weight: 700;
+}
+
+.message-content code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #f3f4f6;
+  font-family: monospace;
+}
+.input-area textarea {
+  line-height: 1.5;
+  max-height: 180px;
+  overflow-y: auto;
+}
